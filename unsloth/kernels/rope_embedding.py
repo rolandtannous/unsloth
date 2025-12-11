@@ -20,12 +20,12 @@ from ..device_type import DEVICE_COUNT
 from .utils import calculate_settings, torch_gpu_device, torch_device_stream
 
 
-@triton.heuristics(
-    {
-        "BACKWARD_PASS": lambda args: bool(args["BACKWARD_PASS"]),
-        "HAS_ROPE_INDICES": lambda args: bool(args["HAS_ROPE_INDICES"]),
-    }
-)
+# @triton.heuristics(
+#     {
+#         "BACKWARD_PASS": lambda args: bool(args["BACKWARD_PASS"]),
+#         "HAS_ROPE_INDICES": lambda args: bool(args["HAS_ROPE_INDICES"]),
+#     }
+# )
 @triton.jit
 def _rope_embedding_QK(
     Q,
